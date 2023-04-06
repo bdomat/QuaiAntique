@@ -14,6 +14,22 @@ footer {
 nav {
   background: #2b2828;
 }
+.cta{
+  background: #C14049;
+  color:#fff;
+  padding: 1% 4%;
+  border: none;
+}
+.header-top{
+  background: rgba(0, 0, 0, 0.3);
+}
+.header-top a{
+  text-decoration: none;
+  color: #fff;
+}
+.header-ico{
+  font-size: 2.5rem;
+}
 .home-header {
   background: url("../../img/bg-home.jpg");
   height: 100vh;
@@ -25,9 +41,19 @@ nav {
   padding: 15vh 0vh 0vh 0vh;
   height: 70vh;
 }
+.home-entrance h1{
+  font-size: 3.5rem;
+}
 .nav-link {
   color: #ffffff;
+  text-transform: uppercase;
 }
 .footer-top {
   color: #000;
+}
+.btn-cta-menu{
+  border-radius: 0px;
+  background: #DDA044;
+  color: #ffffff;
+  text-transform: uppercase;
 }
