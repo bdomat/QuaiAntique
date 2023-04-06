@@ -7,3 +7,27 @@ body {
 body h1 {
   font-weight: 700;
 }
+
+footer {
+  text-align: center;
+}
+nav {
+  background: #2b2828;
+}
+.home-header {
+  background: url("../../img/bg-home.jpg");
+  height: 100vh;
+  background-size: cover;
+}
+.home-entrance {
+  justify-content: center;
+  align-items: center;
+  padding: 15vh 0vh 0vh 0vh;
+  height: 70vh;
+}
+.nav-link {
+  color: #ffffff;
+}
+.footer-top {
+  color: #000;
+}
