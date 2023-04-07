@@ -13,21 +13,31 @@ footer {
 }
 nav {
   background: #2b2828;
+  font-size: 1.3rem;
 }
-.cta{
-  background: #C14049;
-  color:#fff;
+.cta {
+  background: #c14049;
+  color: #fff;
   padding: 1% 4%;
-  border: none;
+  border: 3px solid #ffffff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 0px;
 }
-.header-top{
-  background: rgba(0, 0, 0, 0.3);
+.cta:hover {
+  background: #ffffff;
+  color: #c14049;
+  border: 3px solid #ffffff;
 }
-.header-top a{
+.header-top {
+  background: #15141a;
+  padding: 40px;
+}
+.header-top a {
   text-decoration: none;
   color: #fff;
 }
-.header-ico{
+.header-ico {
   font-size: 2.5rem;
 }
 .home-header {
@@ -41,7 +51,7 @@ nav {
   padding: 15vh 0vh 0vh 0vh;
   height: 70vh;
 }
-.home-entrance h1{
+.home-entrance h1 {
   font-size: 3.5rem;
 }
 .nav-link {
@@ -51,9 +61,10 @@ nav {
 .footer-top {
   color: #000;
 }
-.btn-cta-menu{
+.btn-cta-menu {
   border-radius: 0px;
-  background: #DDA044;
+  background: #dda044;
   color: #ffffff;
   text-transform: uppercase;
+  font-size: 1.3rem;
 }
