@@ -1,6 +1,6 @@
 body {
-  background: #2b2828;
-  color: #fff;
+  background: #fff;
+  color: #2b2828;
   font-family: "League Spartan", sans-serif;
 }
 
@@ -23,6 +23,7 @@ nav {
   font-size: 1.3rem;
   font-weight: 700;
   border-radius: 0px;
+  text-transform: uppercase;
 }
 .cta:hover {
   background: #ffffff;
@@ -44,6 +45,7 @@ nav {
   background: url("../../img/bg-home.jpg");
   height: 100vh;
   background-size: cover;
+  color: #fff;
 }
 .home-entrance {
   justify-content: center;
@@ -59,7 +61,7 @@ nav {
   text-transform: uppercase;
 }
 .footer-top {
-  color: #000;
+  color: #2b2828;
 }
 .btn-cta-menu {
   border-radius: 0px;
@@ -67,4 +69,20 @@ nav {
   color: #ffffff;
   text-transform: uppercase;
   font-size: 1.3rem;
+}
+.separator {
+  width: 150px;
+  text-align: center;
+  display: block;
+  border-top: 1px solid #2b2828;
+  margin: 20px auto;
+}
+#imageGallery img {
+  width: 100%;
+}
+#aboutUs .row {
+  border: 1px solid #2b2828;
+}
+#aboutUs img {
+  width: 100%;
 }

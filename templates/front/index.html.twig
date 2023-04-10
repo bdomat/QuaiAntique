@@ -2,7 +2,38 @@
 
 {% block title %}Restaurant Quai Antique | Arnaud Michant
 {% endblock %}
-
 {% block body %}
-	<h1 class="text-center">Restaurant<br>Le Quai Antique</h1>
-{% endblock %}
+	<div class="home-entrance container pt-50 text-center">
+		<h1>Restaurant<br>"Le Quai Antique"</h1>
+		<p class="m-3">Goûtez à la Savoie !</p>
+		<button class="btn cta">Consulter notre carte</button>
+	</div>
+</header>
+<div class="container">
+	<section class="text-center m-5" id="imageGallery">
+		<div class="row m-5">
+			<div class="col-lg-4 p-2">
+				<img src="img/dish.jpg" alt="">
+			</div>
+			<div class="col-lg-4 p-2">
+				<img src="img/dish.jpg" alt="">
+			</div>
+			<div class="col-lg-4 p-2">
+				<img src="img/dish.jpg" alt="">
+			</div>
+		</div>
+		<button class="btn cta">Réserver une table</button>
+	</section>
+	<section class="text-center m-5" id="aboutUs">
+		<h2 class="m-5">Notre chef</h2>
+		<div class="row">
+			<div class="col-lg-6 p-0">
+				<img src="img/chef-antoine-michant.jpg" alt=""></div>
+			<div class="col-lg-6 p-5 d-grid">
+				<h3>Antoine Michant</h3>
+				<span class="separator"></span>
+				<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nam recusandae sit aliquam alias iusto nemo, harum et quisquam facilis consequatur inventore sint veritatis, quod quam quia placeat dolor eum.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nam recusandae sit aliquam alias iusto nemo, harum et quisquam facilis consequatur inventore sint veritatis, quod quam quia placeat dolor eum.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam nam recusandae sit aliquam alias iusto nemo, harum et quisquam facilis consequatur inventore sint veritatis, quod quam quia placeat dolor eum.</p>
+			</div>
+		</div>
+	</section>
+</div>{% endblock %}
