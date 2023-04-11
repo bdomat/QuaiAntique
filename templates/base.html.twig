@@ -27,15 +27,16 @@
 						<img class="logoqa m-3" src="img/logo-restaurant-quai-antique.png" alt="logo restaurant quai antique">
 					</div>
 					<div class="col d-grid justify-content-end">
-						<a href="#" class="text-center">
+						<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalForm">
 							<i class="fa-solid fa-circle-user header-ico"></i><br>
 							<span>Connexion</span>
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>
 			{% include "front/_partials/_nav.html.twig" %}
 		</header>
 		{% block body %}{% endblock %}
+		{% include "front/_partials/_login.html.twig" %}
 		{% include "front/_partials/_footer.html.twig" %}</body>
 </html>

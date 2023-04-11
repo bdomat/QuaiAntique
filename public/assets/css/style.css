@@ -19,6 +19,9 @@ nav {
   background: #2b2828;
   font-size: 1.3rem;
 }
+.navbar-toggler-icon{
+  color: #fff;
+}
 .separator {
   width: 150px;
   text-align: center;
@@ -38,10 +41,20 @@ nav {
   border-radius: 0px;
   text-transform: uppercase;
 }
+.cta a{
+  color:#fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 0px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
 .cta:hover {
-  background: #ffffff;
   color: #c14049;
   border: 3px solid #ffffff;
+}
+.cta a:hover{
+  color: #c14049;
 }
 
 /* HEADER */
@@ -50,7 +63,6 @@ header {
 }
 .header-top {
   background: #15141a;
-  padding: 40px;
 }
 .header-top a {
   text-decoration: none;
@@ -69,6 +81,72 @@ header {
 .top h1 {
   font-size: 3.5rem;
 }
+/*LOGIN MODAL*/
+.modal-content {
+  width: 80%;
+  margin: 0 auto;
+}
+.modal-body {
+  padding: 0;
+}
+.btn-close {
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+.login-form h1 {
+  font-size: 2.3em;
+  font-weight: bold;
+}
+.login-form {
+  padding: 2em;
+  max-width: 100%;
+  color: #fff;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+}
+@media (max-width: 576px) {
+  .login-form {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+.form-control:focus {
+  box-shadow: inset 0 -1px 0 #7e7e7e;
+}
+.form-control {
+  background-color: inherit;
+  color: #fff;
+  padding-left: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+}
+.login-form .btn {
+  width: 100%;
+  font-weight: 800;
+  background-color: #dda044;
+  color: #fff;
+  border-radius: 0;
+  padding: 0.5em 0;
+}
+.login-form .btn:hover {
+  background-color: inherit;
+  color: #fff;
+  border-color: #fff;
+}
+.login-form p {
+  text-align: center;
+  padding-top: 2em;
+  color: grey;
+}
+.login-form p a {
+  color: #dda044;
+  text-decoration: none;
+}
+.login-form p a:hover {
+  color: #fff;
+} 
+
 /* MENU */
 .nav-link {
   color: #ffffff;
@@ -141,6 +219,7 @@ header {
 .option {
   background: #fff;
   color: #15141a;
+  min-height: 40vh;
   max-width: 25%;
   border-radius: 5px;
 }
