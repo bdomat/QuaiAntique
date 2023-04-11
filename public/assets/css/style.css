@@ -4,12 +4,19 @@ body {
   font-family: "League Spartan", sans-serif;
 }
 
-body h1 {
+h1,
+h2 {
   font-weight: 700;
+}
+
+h2,
+h3 {
+  text-transform: capitalize;
 }
 
 footer {
   text-align: center;
+  margin-top: 200px;
 }
 nav {
   background: #2b2828;
@@ -63,6 +70,10 @@ nav {
 .footer-top {
   color: #2b2828;
 }
+.footer-top h2 {
+  color: #c14049;
+  font-size: 2.5rem;
+}
 .btn-cta-menu {
   border-radius: 0px;
   background: #dda044;
@@ -85,4 +96,37 @@ nav {
 }
 #aboutUs img {
   width: 100%;
+}
+.footer-bottom {
+  background: #2b2828;
+  color: #fff;
+}
+.footer-bottom ul {
+  font-size: 2rem;
+  justify-content: center;
+  padding: 0px;
+  list-style: none;
+  gap: 20px;
+}
+.footer-bottom i {
+  color: #dda044;
+}
+.opening-slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-row-gap: 5px;
+}
+.opening-days ul,
+.opening-hours ul {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  list-style: none;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(7, 1fr);
+  padding: 0px;
+}
+.opening-days ul li:nth-child(even),
+.opening-hours ul li:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
 }
