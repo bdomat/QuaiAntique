@@ -9,19 +9,25 @@ h2 {
   font-weight: 700;
 }
 
+h1,
 h2,
 h3 {
   text-transform: capitalize;
 }
 
-footer {
-  text-align: center;
-  margin-top: 200px;
-}
 nav {
   background: #2b2828;
   font-size: 1.3rem;
 }
+.separator {
+  width: 150px;
+  text-align: center;
+  display: block;
+  border-top: 1px solid #2b2828;
+  margin: 20px auto;
+}
+
+/* BUTTONS */
 .cta {
   background: #c14049;
   color: #fff;
@@ -37,6 +43,11 @@ nav {
   color: #c14049;
   border: 3px solid #ffffff;
 }
+
+/* HEADER */
+header {
+  height: 30vh;
+}
 .header-top {
   background: #15141a;
   padding: 40px;
@@ -48,32 +59,22 @@ nav {
 .header-ico {
   font-size: 2.5rem;
 }
-.home-header {
-  background: url("../../img/bg-home.jpg");
-  height: 100vh;
-  background-size: cover;
-  color: #fff;
-}
-.home-entrance {
+.top {
   justify-content: center;
   align-items: center;
   padding: 15vh 0vh 0vh 0vh;
   height: 70vh;
+  color: #fff;
 }
-.home-entrance h1 {
+.top h1 {
   font-size: 3.5rem;
 }
+/* MENU */
 .nav-link {
   color: #ffffff;
   text-transform: uppercase;
 }
-.footer-top {
-  color: #2b2828;
-}
-.footer-top h2 {
-  color: #c14049;
-  font-size: 2.5rem;
-}
+
 .btn-cta-menu {
   border-radius: 0px;
   background: #dda044;
@@ -81,12 +82,16 @@ nav {
   text-transform: uppercase;
   font-size: 1.3rem;
 }
-.separator {
-  width: 150px;
-  text-align: center;
-  display: block;
-  border-top: 1px solid #2b2828;
-  margin: 20px auto;
+
+/* PAGES CONTENT */
+#home-top {
+  background: url("../../img/bg-home.jpg");
+  background-size: cover;
+}
+#menu-top {
+  background: url("../../img/bg-menu.jpg");
+  height: 40vh;
+  background-size: cover;
 }
 #imageGallery img {
   width: 100%;
@@ -97,19 +102,67 @@ nav {
 #aboutUs img {
   width: 100%;
 }
-.footer-bottom {
-  background: #2b2828;
-  color: #fff;
+#dishes-list {
+  padding-top: 50px;
 }
-.footer-bottom ul {
-  font-size: 2rem;
-  justify-content: center;
-  padding: 0px;
-  list-style: none;
-  gap: 20px;
+.dish {
+  border-bottom: 1px dotted #2b2828;
+  padding: 5px;
+  align-items: center;
 }
-.footer-bottom i {
+.dish-title {
+  font-weight: 600;
+}
+.dish-desc {
+  font-style: italic;
+  margin-bottom: 0px;
+}
+.dish-price {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+#dishes-list .separator {
+  padding-bottom: 50px;
+}
+#dishes-list h2 {
+  padding-top: 50px;
   color: #dda044;
+}
+.dining-options {
+  text-align: center;
+  color: #fff;
+  background: #dda044;
+}
+
+.dining-options .row {
+  margin: auto;
+  justify-content: center;
+}
+.option {
+  background: #fff;
+  color: #15141a;
+  max-width: 25%;
+  border-radius: 5px;
+}
+.option-title {
+  font-size: 1.2rem;
+  padding: 10px;
+}
+.option-content {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+/* FOOTER */
+footer {
+  text-align: center;
+  margin-top: 200px;
+}
+.footer-top {
+  color: #2b2828;
+}
+.footer-top h2 {
+  color: #c14049;
+  font-size: 2.5rem;
 }
 .opening-slots {
   display: grid;
@@ -129,4 +182,19 @@ nav {
 .opening-days ul li:nth-child(even),
 .opening-hours ul li:nth-child(even) {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.footer-bottom {
+  background: #2b2828;
+  color: #fff;
+}
+.footer-bottom ul {
+  font-size: 2rem;
+  justify-content: center;
+  padding: 0px;
+  list-style: none;
+  gap: 20px;
+}
+.footer-bottom i {
+  color: #dda044;
 }

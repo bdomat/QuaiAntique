@@ -19,7 +19,7 @@
 		<script src="{{asset('assets/js/scripts.js')}}" defer></script>
 	</head>
 	<body>
-		<header class="home-header">
+		<header>
 			<div class="header-top">
 				<div class="row align-items-center">
 					<div class="col"></div>
@@ -35,8 +35,7 @@
 				</div>
 			</div>
 			{% include "front/_partials/_nav.html.twig" %}
-
-			{% block body %}{% endblock %}
-			{% include "front/_partials/_footer.html.twig" %}</body>
-	</body>
+		</header>
+		{% block body %}{% endblock %}
+		{% include "front/_partials/_footer.html.twig" %}</body>
 </html>
