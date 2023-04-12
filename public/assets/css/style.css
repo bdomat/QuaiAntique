@@ -19,7 +19,7 @@ nav {
   background: #2b2828;
   font-size: 1.3rem;
 }
-.navbar-toggler-icon{
+.navbar-toggler-icon {
   color: #fff;
 }
 .separator {
@@ -41,8 +41,8 @@ nav {
   border-radius: 0px;
   text-transform: uppercase;
 }
-.cta a{
-  color:#fff;
+.cta a {
+  color: #fff;
   font-size: 1.3rem;
   font-weight: 700;
   border-radius: 0px;
@@ -53,13 +53,13 @@ nav {
   color: #c14049;
   border: 3px solid #ffffff;
 }
-.cta a:hover{
+.cta a:hover {
   color: #c14049;
 }
 
 /* HEADER */
 header {
-  height: 30vh;
+  height: 20vh;
 }
 .header-top {
   background: #15141a;
@@ -145,7 +145,7 @@ header {
 }
 .login-form p a:hover {
   color: #fff;
-} 
+}
 
 /* MENU */
 .nav-link {

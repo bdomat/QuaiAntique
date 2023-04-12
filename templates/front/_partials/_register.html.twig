@@ -1,10 +1,10 @@
-<div class="modal fade" id="LoginModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+<div class="modal fade" id="RegisterModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-body">
 				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
 				<div class="login-form bg-dark text-center">
-					<h1 class="text-center">Connexion</h1>
+					<h1 class="text-center">Inscription</h1>
 					<form>
 						<div class="mb-3 mt-4">
 							<label for="exampleInputEmail1" class="form-label">Email</label>
@@ -14,10 +14,8 @@
 							<label for="exampleInputPassword1" class="form-label">Mot de passe</label>
 							<input type="password" class="form-control" id="exampleInputPassword1">
 						</div>
-						<button type="submit" class="btn btn-light mt-3">CONNEXION</button>
-						<p>Vous ne possèdez pas encore de compte ?
-							<br>Gagnez du temps lors de vos prochaines réservations !<br>
-							<a href="#" data-bs-toggle="modal" data-bs-target="#RegisterModalForm">Créer un compte</a>
+						<button type="submit" class="btn btn-light mt-3">CRÉER UN COMPTE</button>
+						<p>Vous possèdez déja un compte ? Connectez-vous !
 						</p>
 					</form>
 				</div>
@@ -25,4 +23,3 @@
 		</div>
 	</div>
 </div>
-{% include "front/_partials/_register.html.twig" %}
