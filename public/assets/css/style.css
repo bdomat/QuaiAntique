@@ -71,6 +71,9 @@ header {
 .header-ico {
   font-size: 2.5rem;
 }
+.logoqa {
+  max-height: 12vh;
+}
 .top {
   justify-content: center;
   align-items: center;
@@ -245,22 +248,22 @@ footer {
 }
 .opening-slots {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-row-gap: 5px;
 }
-.opening-days ul,
-.opening-hours ul {
+.day {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.opening-slots .day:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+.opening-days,
+.opening-hours {
   font-size: 1.2rem;
   text-transform: uppercase;
-  list-style: none;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(7, 1fr);
   padding: 0px;
-}
-.opening-days ul li:nth-child(even),
-.opening-hours ul li:nth-child(even) {
-  background: rgba(0, 0, 0, 0.1);
 }
 
 .footer-bottom {
