@@ -28,6 +28,9 @@ class Reservations
     #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?Users $user_id = null;
 
+    #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
+    private ?Tables $tables = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,28 @@ class Reservations
     public function setUserId(?Users $user_id): self
     {
         $this->user_id = $user_id;
+
+        return $this;
+    }
+
+    public function getTables(): ?Tables
+    {
+        return $this->tables;
+    }
+
+    public function setTables(?Tables $tables): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($tables === null && $this->tables !== null) {
+            $this->tables->setReservation(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($tables !== null && $tables->getReservation() !== $this) {
+            $tables->setReservation($this);
+        }
+
+        $this->tables = $tables;
 
         return $this;
     }
