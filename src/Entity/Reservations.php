@@ -26,7 +26,7 @@ class Reservations
     private ?\DateTimeImmutable $date_time = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
-    private ?Users $user_id = null;
+    private ?Users $user = null;
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
     private ?Tables $tables = null;
@@ -84,14 +84,14 @@ class Reservations
         return $this;
     }
 
-    public function getUserId(): ?Users
+    public function getUser(): ?Users
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?Users $user_id): self
+    public function setUser(?Users $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }

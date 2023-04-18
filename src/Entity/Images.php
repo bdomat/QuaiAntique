@@ -16,7 +16,7 @@ class Images
     #[ORM\Column(length: 255)]
     private ?string $src = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 100, nullable: true)]
     private ?string $title = null;
 
     public function getId(): ?int
