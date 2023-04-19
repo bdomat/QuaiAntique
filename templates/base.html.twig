@@ -27,12 +27,21 @@
 						<img class="logoqa m-3" src="img/logo-restaurant-quai-antique.png" alt="logo restaurant quai antique">
 					</div>
 					<div class="col d-grid justify-content-end">
-						<a aria-current="page" href="{{path('app_login')}}">
-							<button type="button" class="btn btn-dark">
-								<i class="fa-solid fa-circle-user header-ico"></i><br>
-								<span>Connexion</span>
-							</button>
-						</a>
+						{% if app.user %}
+							<a aria-current="page" href="{{path('app_logout')}}">
+								<button type="button" class="btn btn-dark">
+									<i class="fa-solid fa-circle-user header-ico"></i><br>
+									<span>Déconnexion</span>
+								</button>
+							</a>
+						{% else %}
+							<a aria-current="page" href="{{path('app_login')}}">
+								<button type="button" class="btn btn-dark">
+									<i class="fa-solid fa-circle-user header-ico"></i><br>
+									<span>Connexion</span>
+								</button>
+							</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
