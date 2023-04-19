@@ -7,10 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -35,6 +37,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Reservations::class)]
     private Collection $reservations;
+
+    #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    private ?int $default_guests_number = null;
 
     public function __construct()
     {
@@ -149,6 +154,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
                 $reservation->setUserId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDefaultGuestsNumber(): ?int
+    {
+        return $this->default_guests_number;
+    }
+
+    public function setDefaultGuestsNumber(?int $default_guests_number): self
+    {
+        $this->default_guests_number = $default_guests_number;
 
         return $this;
     }

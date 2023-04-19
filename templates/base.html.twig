@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Restaurant Quai Antique
 			{% endblock %}
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,16 +27,17 @@
 						<img class="logoqa m-3" src="img/logo-restaurant-quai-antique.png" alt="logo restaurant quai antique">
 					</div>
 					<div class="col d-grid justify-content-end">
-						<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LoginModalForm">
-							<i class="fa-solid fa-circle-user header-ico"></i><br>
-							<span>Connexion</span>
-						</button>
+						<a aria-current="page" href="{{path('app_login')}}">
+							<button type="button" class="btn btn-dark">
+								<i class="fa-solid fa-circle-user header-ico"></i><br>
+								<span>Connexion</span>
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>
 			{% include "front/_partials/_nav.html.twig" %}
 		</header>
 		{% block body %}{% endblock %}
-		{% include "front/_partials/_login.html.twig" %}
 		{% include "front/_partials/_footer.html.twig" %}</body>
 </html>

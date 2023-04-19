@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription | Restaurant Quai Antique
+{% endblock %}
+
+{% block body %}
+	<div class="bg-light py-5">
+		<section class="container container-login">
+			<div class="row">
+				<div class="col login-form text-center">
+					<h1>Inscription</h1>
+					{{ form_start(registrationForm) }}
+					{{ form_row(registrationForm.email, {label: 'E-mail :'}) }}
+					{{ form_row(registrationForm.plainPassword, {label: 'Mot de passe :'}) }}
+					{{ form_row(registrationForm.allergies, {label: 'Allergies :'}) }}
+					{{ form_row(registrationForm.default_guests_number, {label: 'Nombre de convives par défaut :'}) }}
+					{{ form_row(registrationForm.RGPDconsent) }}
+					<button type="submit" class="btn">CRÉER UN COMPTE</button>
+					{{ form_end(registrationForm) }}
+					<p>Vous possèdez déjà un compte ?<br>
+						<a href="{{path('app_login')}}">Connectez-vous !</a>
+					</p>
+				</div>
+			</div>
+		</section>
+	</div>
+{% endblock %}
