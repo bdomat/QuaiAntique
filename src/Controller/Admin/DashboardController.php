@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Dishes;
 use App\Entity\Formulas;
+use App\Entity\Images;
 use App\Entity\Menus;
 use App\Entity\Reservations;
 use App\Entity\Restaurants;
@@ -66,6 +67,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Registre des réservations', 'fa fa-eye', Reservations::class),
             MenuItem::linkToCrud('Ajouter une réservation', 'fa fa-plus', Reservations::class)->setAction(Crud::PAGE_NEW),
         ]);
+        yield MenuItem::linkToCrud('Gallerie photos', 'fa fa-image', Images::class);
         yield MenuItem::section('Carte', 'fa fa-book-open');
         yield MenuItem::subMenu('Plats', 'fa fa-fish-fins')->setSubItems([
             MenuItem::linkToCrud('Ajouter un plat', 'fa fa-plus', Dishes::class)->setAction(Crud::PAGE_NEW),
