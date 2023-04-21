@@ -19,11 +19,12 @@ class Dishes
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $category = null;
-
     #[ORM\Column]
     private ?float $price = null;
+
+    #[ORM\ManyToOne(inversedBy: 'dish')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $parent_category = null;
 
     public function getId(): ?int
     {
@@ -54,18 +55,6 @@ class Dishes
         return $this;
     }
 
-    public function getCategory(): ?string
-    {
-        return $this->category;
-    }
-
-    public function setCategory(string $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     public function getPrice(): ?float
     {
         return $this->price;
@@ -76,5 +65,21 @@ class Dishes
         $this->price = $price;
 
         return $this;
+    }
+
+    public function getParentCategory(): ?Category
+    {
+        return $this->parent_category;
+    }
+
+    public function setParentCategory(?Category $parent_category): self
+    {
+        $this->parent_category = $parent_category;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->title;
     }
 }

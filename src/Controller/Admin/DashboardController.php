@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Category;
 use App\Entity\Dishes;
 use App\Entity\Formulas;
 use App\Entity\Images;
@@ -72,6 +73,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Gallerie photos', 'fa fa-image', Images::class);
         yield MenuItem::section('Carte', 'fa fa-book-open');
         yield MenuItem::subMenu('Plats', 'fa fa-fish-fins')->setSubItems([
+            MenuItem::linkToCrud('Ajouter une catégorie', 'fa fa-plus', Category::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Liste des catégories', 'fa fa-list', Category::class),
             MenuItem::linkToCrud('Ajouter un plat', 'fa fa-plus', Dishes::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Liste des plats', 'fa fa-list', Dishes::class),
         ]);
