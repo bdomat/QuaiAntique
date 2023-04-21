@@ -59,11 +59,11 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home', Dashboard::class);
-        yield MenuItem::section('Informations', 'fa fa-circle-info');
+        yield MenuItem::section('Établissement', 'fa fa-circle-info');
         yield MenuItem::subMenu('Restaurant', 'fa fa-building')->setSubItems([
             MenuItem::linkToCrud('Horaires d\'ouverture', 'fa fa-clock', Schedules::class),
             MenuItem::linkToCrud('Ajouter un créneau horaire', 'fa fa-plus', Schedules::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Seuil de convives', 'fa fa-users-rays', Restaurants::class),
+            MenuItem::linkToCrud('Capacité maximale', 'fa fa-users-rays', Restaurants::class),
         ]);
         yield MenuItem::subMenu('Réservations', 'fa fa-table-list')->setSubItems([
             MenuItem::linkToCrud('Registre des réservations', 'fa fa-eye', Reservations::class),
