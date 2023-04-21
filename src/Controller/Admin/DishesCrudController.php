@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Dishes;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -16,15 +17,21 @@ class DishesCrudController extends AbstractCrudController
         return Dishes::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInPlural(label: 'Plats')
+            ->setEntityLabelInSingular(label: 'Plat');
+    }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextareaField::new('description'),
-            TextField::new('category'),
-            MoneyField::new('price')->setCurrency('EUR')
+            TextField::new(propertyName: 'title', label: 'Intitulé'),
+            TextareaField::new(propertyName: 'description', label: 'Composition du plat'),
+            TextField::new(propertyName: 'category', label: 'Catégorie'),
+            MoneyField::new(propertyName: 'price', label: 'Prix')->setCurrency('EUR')
         ];
     }
 }
