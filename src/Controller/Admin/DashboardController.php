@@ -8,6 +8,7 @@ use App\Entity\Images;
 use App\Entity\Menus;
 use App\Entity\Reservations;
 use App\Entity\Restaurants;
+use App\Entity\Schedules;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -60,7 +61,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home', Dashboard::class);
         yield MenuItem::section('Informations', 'fa fa-circle-info');
         yield MenuItem::subMenu('Restaurant', 'fa fa-building')->setSubItems([
-            MenuItem::linkToCrud('Horaires', 'fa fa-clock', Restaurants::class),
+            MenuItem::linkToCrud('Horaires d\'ouverture', 'fa fa-clock', Schedules::class),
+            MenuItem::linkToCrud('Ajouter un créneau horaire', 'fa fa-plus', Schedules::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Seuil de convives', 'fa fa-users-rays', Restaurants::class),
         ]);
         yield MenuItem::subMenu('Réservations', 'fa fa-table-list')->setSubItems([

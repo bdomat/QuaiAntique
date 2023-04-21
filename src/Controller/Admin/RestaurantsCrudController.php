@@ -6,7 +6,6 @@ use App\Entity\Restaurants;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 
@@ -29,7 +28,6 @@ class RestaurantsCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             IntegerField::new(propertyName: 'guest_threshold', label: 'Nombre de convives maximum'),
-            CollectionField::new(propertyName: 'schedule', label: 'Horaires d\'ouverture')
         ];
     }
 }

@@ -14,27 +14,12 @@ class Restaurants
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
-    private array $schedule = [];
-
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $guest_threshold = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSchedule(): array
-    {
-        return $this->schedule;
-    }
-
-    public function setSchedule(?array $schedule): self
-    {
-        $this->schedule = $schedule;
-
-        return $this;
     }
 
     public function getGuestThreshold(): ?int
