@@ -11,124 +11,23 @@
 	</div>
 	<section class="container justify-content-center" id="dishes-list">
 		<div class="row text-center">
-			<h2>Les entrées</h2>
-			<span class="separator"></span>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<h2>Les plats</h2>
-			<span class="separator"></span>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-		</div>
-		<div class="row text-center">
-			<h2>Les desserts</h2>
-			<span class="separator"></span>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
-			<div class="row dish">
-				<div class="col-9 text-start">
-					<span class="dish-title">Lorem ipsum, dolor sit amet consectetur.</span>
-					<p class="dish-desc">Nesciunt quaerat reprehenderit quas vero maiores aspernatur fuga repudiandae quae quidem, sint unde doloribus!</p>
-				</div>
-				<div class="col-3">
-					<span class="dish-price">10€</span>
-				</div>
-			</div>
+			{% for dishesCategory in dishesCategories %}
+				<h2>{{dishesCategory.title}}</h2>
+				<span class="separator"></span>
+				{% for dish in dishes %}
+					{% if dish.parent_category.title == dishesCategory.title %}
+						<div class="row dish">
+							<div class="col-9 text-start">
+								<span class="dish-title">{{dish.title}}</span>
+								<p class="dish-desc">{{dish.description}}</p>
+							</div>
+							<div class="col-3">
+								<span class="dish-price">{{dish.price}}</span>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
 		</div>
 	</section>
 	<section class="dining-options my-5 py-5">

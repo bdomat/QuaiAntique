@@ -32,7 +32,7 @@ class DishesCrudController extends AbstractCrudController
             TextField::new(propertyName: 'title', label: 'Intitulé'),
             TextareaField::new(propertyName: 'description', label: 'Composition du plat'),
             MoneyField::new(propertyName: 'price', label: 'Prix')->setCurrency('EUR'),
-            AssociationField::new(propertyName: 'parent_category', label: 'Catégorie'),
+            AssociationField::new(propertyName: 'parent_category', label: 'Catégorie associée au plat'),
         ];
     }
 }

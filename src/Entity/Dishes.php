@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\DishesCategoriesRepository;
 use App\Repository\DishesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +25,7 @@ class Dishes
 
     #[ORM\ManyToOne(inversedBy: 'dish')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $parent_category = null;
+    private ?DishesCategories $parent_category = null;
 
     public function getId(): ?int
     {
@@ -67,12 +68,16 @@ class Dishes
         return $this;
     }
 
-    public function getParentCategory(): ?Category
+    public function getParentCategory(): ?DishesCategories
+    {
+        return $this->parent_category;
+    }
+    public function getParent_Category(): ?DishesCategories
     {
         return $this->parent_category;
     }
 
-    public function setParentCategory(?Category $parent_category): self
+    public function setParentCategory(?DishesCategories $parent_category): self
     {
         $this->parent_category = $parent_category;
 
