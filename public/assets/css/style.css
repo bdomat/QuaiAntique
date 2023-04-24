@@ -257,6 +257,9 @@ header {
   font-size: 1.4rem;
   font-weight: 700;
 }
+.option-price{
+  margin-bottom: 1.1rem;
+}
 /* FOOTER */
 footer {
   text-align: center;
