@@ -21,7 +21,7 @@ class Dishes
     private ?string $description = null;
 
     #[ORM\Column(length: 10)]
-    private ?string $price = null;
+    private ?int $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'dish')]
     #[ORM\JoinColumn(nullable: false)]
@@ -56,12 +56,12 @@ class Dishes
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 

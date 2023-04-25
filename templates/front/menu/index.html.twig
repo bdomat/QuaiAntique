@@ -22,7 +22,8 @@
 								<p class="dish-desc">{{dish.description}}</p>
 							</div>
 							<div class="col-3">
-								<span class="dish-price">{{dish.price}}</span>
+								<span class="dish-price">{{dish.price / 100}}
+									€</span>
 							</div>
 						</div>
 					{% endif %}
@@ -40,7 +41,8 @@
 					{% for formula in formulas %}
 						{% if formula.menu.title == menu.title %}
 							<span class="option-content">{{formula.title}}</span>
-							<span class="option-price">{{formula.price}}</span>
+							<span class="option-price">{{formula.price / 100}}
+								€</span>
 						{% endif %}
 					{% endfor %}
 				</div>

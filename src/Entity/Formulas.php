@@ -17,7 +17,7 @@ class Formulas
     private ?string $title = null;
 
     #[ORM\Column]
-    private ?float $price = null;
+    private ?int $price = null;
 
     #[ORM\ManyToOne(inversedBy: 'formulas')]
     private ?Menus $menu = null;
@@ -39,12 +39,12 @@ class Formulas
         return $this;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(float $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
