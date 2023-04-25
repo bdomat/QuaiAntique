@@ -14,9 +14,11 @@
 		<section class="text-center" id="imageGallery">
 			<div class="row m-5 justify-content-center">
 				{% for image in images %}
-					<div class="col-lg-4 p-2">
+					<div class="col-lg-4 p-2 focus-img">
 						<img src="/assets/images/{{image.src}}" alt="{{image.title}} ">
-						<h4>{{image.title}}</h4>
+						<div class="focus-title hidden">
+							<h4>{{image.title}}</h4>
+						</div>
 					</div>
 				{% endfor %}
 			</div>

@@ -200,17 +200,32 @@ header {
 #imageGallery img {
   width: 100%;
 }
+#focus-img:hover{
+  opacity: 90%;
+  transition: opacity 1s;
+}
 
-#imageGallery h4:hover {
+.visible {
   display: block;
+  z-index: 2;
   position: relative;
   top: -50%;
   width: 100%;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   padding: 20px;
-  z-index: 22222;
 }
+.hidden {
+  display: block;
+  z-index: -2;
+  position: relative;
+  top: -50%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 20px;
+}
+
 #aboutUs .row {
   border: 1px solid #2b2828;
 }
