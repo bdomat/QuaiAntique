@@ -28,7 +28,9 @@ class MenusCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new(propertyName: 'title', label: 'Intitulé'),
-            TextareaField::new(propertyName: 'description', label: 'Composition'),
+            TextField::new(propertyName: 'menu_entry', label: 'Entrée(s)'),
+            TextField::new(propertyName: 'menu_main_course', label: 'Plat(s)'),
+            TextField::new(propertyName: 'menu_dessert', label: 'Dessert(s)'),
         ];
     }
 }

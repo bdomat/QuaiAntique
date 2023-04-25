@@ -18,11 +18,17 @@ class Menus
     #[ORM\Column(length: 50)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $menu_entry = null;
 
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formulas::class)]
     private Collection $formulas;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $menu_main_course = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $menu_dessert = null;
 
     public function __construct()
     {
@@ -46,14 +52,18 @@ class Menus
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getMenuEntry(): ?string
     {
-        return $this->description;
+        return $this->menu_entry;
+    }
+    public function getMenu_Entry(): ?string
+    {
+        return $this->menu_entry;
     }
 
-    public function setDescription(string $description): self
+    public function setMenuEntry(string $menu_entry): self
     {
-        $this->description = $description;
+        $this->menu_entry = $menu_entry;
 
         return $this;
     }
@@ -90,5 +100,37 @@ class Menus
     public function __toString()
     {
         return $this->title;
+    }
+
+    public function getMenuMainCourse(): ?string
+    {
+        return $this->menu_main_course;
+    }
+    public function getMenu_Main_Course(): ?string
+    {
+        return $this->menu_main_course;
+    }
+
+    public function setMenuMainCourse(?string $menu_main_course): self
+    {
+        $this->menu_main_course = $menu_main_course;
+
+        return $this;
+    }
+
+    public function getMenuDessert(): ?string
+    {
+        return $this->menu_dessert;
+    }
+    public function getMenu_Dessert(): ?string
+    {
+        return $this->menu_dessert;
+    }
+
+    public function setMenuDessert(?string $menu_dessert): self
+    {
+        $this->menu_dessert = $menu_dessert;
+
+        return $this;
     }
 }

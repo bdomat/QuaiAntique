@@ -35,9 +35,13 @@
 		<h3>Nos menus</h3>
 		<div class="row container">
 			{% for menu in menus %}
-				<div class="col-lg-4 option p-2 m-2 d-grid">
+				<div class="col-lg-3 option p-2 m-2 d-grid">
 					<span class="option-title">{{menu.title}}</span>
-					<p class="option-desc">{{menu.description}}</p>
+
+					<span class="option-desc">{{menu.menu_entry}}</span>
+					<span class="option-desc">{{menu.menu_main_course}}</span>
+					<span class="option-desc">{{menu.menu_dessert}}</span>
+
 					{% for formula in formulas %}
 						{% if formula.menu.title == menu.title %}
 							<span class="option-content">{{formula.title}}</span>
