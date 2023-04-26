@@ -6,22 +6,31 @@
 				<span class="separator"></span>
 			</div>
 			<div class="opening-slots">
-				<div class="day">
-					<div class="opening-days">
-						<span>LUNDI</span>
+				{% set schedulesByDay = {} %}
+				{% for schedule in schedules %}
+					{% set day = schedule.day %}
+					{% set schedulesByDay = schedulesByDay|merge({(day): (schedulesByDay[day] ?? [])|merge([schedule])}) %}
+				{% endfor %}
+
+				{% for day, schedulesForDay in schedulesByDay %}
+					<div class="day">
+						<div class="opening-days">
+							<span>{{ day }}</span>
+						</div>
+						{% for schedule in schedulesForDay %}
+							<div class="opening-hours">
+								{% if schedule.is_active %}
+									<span>{{schedule.opening_hour|date('H \\: i')}}
+										-
+										{{schedule.closing_hour|date('H \\: i')}}</span><br>
+								{% else %}
+									<span>FERMÉ</span><br>
+								{% endif %}
+							</div>
+							<div class="opening-hours"></div>
+						{% endfor %}
 					</div>
-					<div class="opening-hours">
-						<span>12:00 - 14:00 | 19:00 - 22:00</span>
-					</div>
-				</div>
-				<div class="day">
-					<div class="opening-days">
-						<span>MARDI</span>
-					</div>
-					<div class="opening-hours">
-						<span>12:00 - 14:00 | 19:00 - 22:00</span>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

@@ -21,8 +21,9 @@ nav {
   background: #2b2828;
   font-size: 1.3rem;
 }
-.navbar-toggler-icon {
-  color: #fff;
+.navbar-toggler {
+  border: 3px solid #dda044;
+  background-color: #fff;
 }
 .separator {
   width: 150px;
@@ -200,7 +201,7 @@ header {
 #imageGallery img {
   width: 100%;
 }
-#focus-img:hover{
+#focus-img:hover {
   opacity: 90%;
   transition: opacity 1s;
 }

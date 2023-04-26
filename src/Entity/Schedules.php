@@ -47,6 +47,10 @@ class Schedules
     {
         return $this->opening_hour;
     }
+    public function getOpening_Hour(): ?\DateTimeInterface
+    {
+        return $this->opening_hour;
+    }
 
     public function setOpeningHour(\DateTimeInterface $opening_hour): self
     {
@@ -59,6 +63,10 @@ class Schedules
     {
         return $this->closing_hour;
     }
+    public function getClosing_Hour(): ?\DateTimeInterface
+    {
+        return $this->closing_hour;
+    }
 
     public function setClosingHour(\DateTimeInterface $closing_hour): self
     {
@@ -68,6 +76,10 @@ class Schedules
     }
 
     public function isIsActive(): ?bool
+    {
+        return $this->is_active;
+    }
+    public function getis_active(): ?bool
     {
         return $this->is_active;
     }

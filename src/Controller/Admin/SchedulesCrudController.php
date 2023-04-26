@@ -30,7 +30,7 @@ class SchedulesCrudController extends AbstractCrudController
             TextField::new('day', 'Jour de la semaine'),
             TimeField::new('opening_hour', 'Heure d\'ouverture'),
             TimeField::new('closing_hour', 'Heure de fermeture'),
-            BooleanField::new('is_active', 'Activer')
+            BooleanField::new('is_active', 'Ouvert')
         ];
     }
 }
