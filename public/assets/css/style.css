@@ -173,13 +173,32 @@ header {
   color: #ffffff;
   text-transform: uppercase;
 }
+.nav-item i {
+  padding-right: 7px;
+  font-size: 1rem;
+  color: #dda044;
+}
+.nav-item:hover {
+  color: #fff;
+}
+.nav-item a:hover,
+.nav-item a:focus {
+  color: #dda044;
+}
 
-.btn-cta-menu {
+#btn-cta-menu {
   border-radius: 0px;
   background: #dda044;
-  color: #ffffff;
+  color: #15141a;
   text-transform: uppercase;
   font-size: 1.3rem;
+}
+#btn-cta-menu i {
+  color: #15141a;
+}
+#btn-cta-menu:hover {
+  background: #dda0449a;
+  color: #fff;
 }
 
 /* PAGES CONTENT */
@@ -190,11 +209,25 @@ header {
 }
 
 #home-top {
+  background-color: #15141a;
   background: url("../../img/bg-home.jpg");
   background-size: cover;
 }
 #menu-top {
+  background-color: #15141a;
   background: url("../../img/bg-menu.jpg");
+  height: 50vh;
+  background-size: cover;
+}
+#about-top {
+  background-color: #15141a;
+  background: url("../../img/bg-about.jpg");
+  height: 50vh;
+  background-size: cover;
+}
+#contact-top {
+  background-color: #15141a;
+  background: url("../../img/bg-contact.jpg");
   height: 50vh;
   background-size: cover;
 }

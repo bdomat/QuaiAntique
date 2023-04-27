@@ -6,20 +6,34 @@
 		<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
 			<ul class="navbar-nav mb-2 mb-lg-0">
 				<li class="nav-item px-lg-4">
-					<a class="nav-link" aria-current="page" href="{{path('home')}}">Acceuil</a>
+					<a class="nav-link" aria-current="page" href="{{path('home')}}">
+						<i class="fa-solid fa-house"></i>
+						Acceuil
+					</a>
 				</li>
 				<li class="nav-item px-lg-4">
-					<a class="nav-link" aria-current="page" href="{{path('about')}}">Le chef</a>
+					<a class="nav-link" aria-current="page" href="{{path('about')}}">
+						<i class="fa-solid fa-utensils"></i>
+						Le chef
+					</a>
 				</li>
 				<li class="nav-item px-lg-4">
-					<a class="nav-link" aria-current="page" href="{{path('menu')}}">Notre carte</a>
+					<a class="nav-link" aria-current="page" href="{{path('menu')}}">
+						<i class="fa-solid fa-book-open-reader"></i>
+						Notre Carte
+					</a>
 				</li>
 				<li class="nav-item px-lg-4">
-					<a class="nav-link" aria-current="page" href="{{path('contact')}}">Contact</a>
+					<a class="nav-link" aria-current="page" href="{{path('contact')}}">
+						<i class="fa-solid fa-id-card"></i>
+						Contact</a>
 				</li>
 				<li class="nav-item px-lg-4">
 					<a href="{{path('booking')}}">
-						<button class="btn btn-cta-menu px-4">Réserver</button>
+						<button class="btn px-4" id="btn-cta-menu">
+							<i class="fa-regular fa-clock"></i>
+							Réserver
+						</button>
 					</a>
 				</li>
 			</ul>
