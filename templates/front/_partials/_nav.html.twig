@@ -30,7 +30,7 @@
 				</li>
 				<li class="nav-item px-lg-4">
 					<a href="{{path('booking')}}">
-						<button class="btn px-4" id="btn-cta-menu">
+						<button class="btn px-4 btn-cta-menu">
 							<i class="fa-regular fa-clock"></i>
 							Réserver
 						</button>
@@ -38,5 +38,26 @@
 				</li>
 			</ul>
 		</div>
+		<a href="{{path('booking')}}" class="btn-mobile">
+			<button type="button" class="btn btn-cta-menu">
+				<i class="fa-regular fa-clock header-ico"></i><br>
+				Réserver
+			</button>
+		</a>
+		{% if app.user %}
+			<a aria-current="page" href="{{path('app_logout')}}" class="btn-mobile">
+				<button type="button" class="btn btn-dark">
+					<i class="fa-solid fa-circle-user header-ico"></i><br>
+					<span>Déconnexion</span>
+				</button>
+			</a>
+		{% else %}
+			<a aria-current="page" href="{{path('app_login')}}" class="btn-mobile">
+				<button type="button" class="btn btn-dark">
+					<i class="fa-solid fa-circle-user header-ico"></i><br>
+					<span>Connexion</span>
+				</button>
+			</a>
+		{% endif %}
 	</div>
 </nav>

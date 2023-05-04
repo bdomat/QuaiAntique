@@ -186,21 +186,34 @@ header {
   color: #dda044;
 }
 
-#btn-cta-menu {
+.btn-cta-menu {
   border-radius: 0px;
   background: #dda044;
   color: #15141a;
   text-transform: uppercase;
   font-size: 1.3rem;
 }
-#btn-cta-menu i {
+.btn-cta-menu i {
   color: #15141a;
 }
-#btn-cta-menu:hover {
+.btn-cta-menu:hover {
   background: #dda0449a;
   color: #fff;
 }
-
+.btn-mobile .btn-dark {
+  background: none;
+  border: none;
+}
+@media (min-width: 992px) {
+  .btn-mobile {
+    display: none;
+  }
+}
+@media (max-width: 991px) {
+  .btn-desktop {
+    display: none;
+  }
+}
 /* PAGES CONTENT */
 @media (min-width: 992px) {
   .container-login {

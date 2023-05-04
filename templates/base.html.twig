@@ -30,14 +30,14 @@
 					</div>
 					<div class="col d-grid justify-content-end">
 						{% if app.user %}
-							<a aria-current="page" href="{{path('app_logout')}}">
+							<a aria-current="page" href="{{path('app_logout')}}" class="btn-desktop">
 								<button type="button" class="btn btn-dark">
 									<i class="fa-solid fa-circle-user header-ico"></i><br>
 									<span>Déconnexion</span>
 								</button>
 							</a>
 						{% else %}
-							<a aria-current="page" href="{{path('app_login')}}">
+							<a aria-current="page" href="{{path('app_login')}}" class="btn-desktop">
 								<button type="button" class="btn btn-dark">
 									<i class="fa-solid fa-circle-user header-ico"></i><br>
 									<span>Connexion</span>
