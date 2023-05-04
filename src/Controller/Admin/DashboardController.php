@@ -10,6 +10,7 @@ use App\Entity\Menus;
 use App\Entity\Reservations;
 use App\Entity\Restaurants;
 use App\Entity\Schedules;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -84,6 +85,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Liste des menus', 'fa fa-list', Menus::class),
             MenuItem::linkToCrud('Ajouter une formule', 'fa fa-plus', Formulas::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Liste des formules', 'fa fa-list', Formulas::class)
+        ]);
+        yield MenuItem::subMenu('Utilisateurs', 'fa fa-user')->setSubItems([
+            MenuItem::linkToCrud('Ajouter un utilisateur', 'fa fa-plus', Users::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Liste des utilisateurs', 'fa fa-list', Users::class)
         ]);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);

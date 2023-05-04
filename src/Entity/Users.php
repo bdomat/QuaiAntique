@@ -35,7 +35,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $allergies = null;
 
-    #[ORM\OneToMany(mappedBy: 'user_id', targetEntity: Reservations::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservations::class)]
     private Collection $reservations;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
@@ -129,7 +129,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Reservations>
+     * @return Collection <int, Reservations>
      */
     public function getReservations(): Collection
     {
@@ -140,7 +140,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->reservations->contains($reservation)) {
             $this->reservations->add($reservation);
-            $reservation->setUserId($this);
+            $reservation->setUser($this);
         }
 
         return $this;
@@ -150,8 +150,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($reservation->getUserId() === $this) {
-                $reservation->setUserId(null);
+            if ($reservation->getUser() === $this) {
+                $reservation->setUser(null);
             }
         }
 
