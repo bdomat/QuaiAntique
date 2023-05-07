@@ -40,6 +40,10 @@ class Reservations
     {
         return $this->reservation_name;
     }
+    public function getreservation_name(): ?string
+    {
+        return $this->reservation_name;
+    }
 
     public function setReservationName(string $reservation_name): self
     {
@@ -72,17 +76,23 @@ class Reservations
         return $this;
     }
 
-    public function getDateTime(): ?\DateTimeImmutable
+    public function getDateTime(): ?\DateTimeInterface
     {
         return $this->date_time;
     }
 
-    public function setDateTime(\DateTimeImmutable $date_time): self
+    public function setDateTime(\DateTimeInterface $date_time): self
     {
-        $this->date_time = $date_time;
+        if ($date_time instanceof \DateTimeImmutable) {
+            $this->date_time = $date_time;
+        } else {
+            $this->date_time = \DateTimeImmutable::createFromMutable($date_time);
+        }
 
         return $this;
     }
+
+
 
     public function getUser(): ?Users
     {

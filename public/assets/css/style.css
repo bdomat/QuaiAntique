@@ -233,24 +233,24 @@ header {
 
 #home-top {
   background-color: #15141a;
-  background: url("../../img/bg-home.jpg");
+  background: url("../images/bg-home.jpg");
   background-size: cover;
 }
 #menu-top {
   background-color: #15141a;
-  background: url("../../img/bg-menu.jpg");
+  background: url("../images/bg-menu.jpg");
   height: 50vh;
   background-size: cover;
 }
 #about-top {
   background-color: #15141a;
-  background: url("../../img/bg-about.jpg");
+  background: url("../images/bg-about.jpg");
   height: 50vh;
   background-size: cover;
 }
 #contact-top {
   background-color: #15141a;
-  background: url("../../img/bg-contact.jpg");
+  background: url("../images/bg-contact.jpg");
   height: 50vh;
   background-size: cover;
 }
