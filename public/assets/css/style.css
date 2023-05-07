@@ -25,6 +25,12 @@ nav {
   border: 3px solid #dda044;
   background-color: #fff;
 }
+@media (max-width: 991px) {
+  .nav-item .btn-cta-menu {
+    display: none;
+  }
+}
+
 .separator {
   width: 150px;
   text-align: center;
