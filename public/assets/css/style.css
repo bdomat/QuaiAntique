@@ -129,7 +129,11 @@ header {
 .form-control:focus {
   box-shadow: inset 0 -1px 0 #7e7e7e;
 }
-.form-control {
+.login-form input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   background-color: inherit;
   color: #fff;
   padding-left: 0;
