@@ -13,3 +13,13 @@ focusImgs.forEach((focusImg, index) => {
     focusTitles[index].classList.replace("visible", "hidden");
   });
 });
+
+/*** Booking Form ***/
+
+flatpickr("#reservation_form_date_time", {
+  enableTime: true,
+  minDate: "today",
+  time_24hr: true,
+  dateFormat: "d-m-Y H:i",
+  minuteIncrement: 15,
+});
