@@ -25,97 +25,79 @@ class ReservationFormType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $schedules = $this->schedulesRepository->findAll();
-
-        foreach ($schedules as $schedule) {
-            $day = strtolower($schedule->getDay());
-
-            $builder->add($day, DateTimeType::class, [
-                'label' => 'Date et heure de réservation pour ' . ucfirst($day) . ':',
-                'widget' => 'single_text',
+        $builder
+            ->add('reservation_name', TextType::class, [
+                'label' => 'Réserver au nom de :',
                 'attr' => [
-                    'id' => 'reservation_form_' . $day,
-                    'class' => 'form-control',
-                ],
-                'html5' => false,
-                'constraints' => [
-                    new Callback([$this, 'validateDateTime']),
-                ],
-                'data' => new \DateTime('today ' . $schedule->getOpeningHour()->format('H:i')),
-            ]);
-        }
-
-        $builder->add('reservation_name', TextType::class, [
-            'label' => 'Nom:',
-            'attr' => [
-                'class' => 'form-control',
-            ],
-        ])
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('reservation_phone', TextType::class, [
-                'label' => 'Téléphone:',
+                'label' => 'Téléphone :',
                 'attr' => [
-                    'class' => 'form-control',
-                ],
+                    'class' => 'form-control'
+                ]
             ])
             ->add('guests_number', IntegerType::class, [
                 'label' => 'Nombre de convives:',
                 'attr' => [
+                    'class' => 'form-control'
+                ],
+                'data' => 1, // default value
+                'constraints' => [
+                    new GreaterThanOrEqual([
+                        'value' => 0,
+                        'message' => 'Le nombre de convives doit être supérieur ou égal à zéro.'
+                    ]),
+                ],
+            ])
+            ->add('date_time', DateTimeType::class, [
+                'label' => 'Date et heure de réservation:',
+                'widget' => 'single_text',
+                'attr' => [
+                    'id' => 'reservation_form_date_time',
                     'class' => 'form-control',
                 ],
+                'minutes' => range(0, 45, 15), // 15 min slice selection
                 'constraints' => [
-                    new GreaterThanOrEqual(1),
+                    new Callback([
+                        'callback' => function ($date, ExecutionContextInterface $context) use ($options) {
+                            /** @var SchedulesRepository $schedulesRepository */
+                            $schedulesRepository = $options['schedules_repository'];
+
+                            // Ensure future date and hour selection
+                            if ($date instanceof \DateTimeInterface && $date < new \DateTime()) {
+                                $context->buildViolation('La date et l\'heure de réservation doivent être futures.')
+                                    ->addViolation();
+                            }
+
+                            // Ensure 15 min slice selection
+                            $minutes = $date->format('i');
+                            if ($minutes % 15 !== 0) {
+                                $context->buildViolation('L\'horaire de réservation doit être une tranche de 15 minutes.')
+                                    ->addViolation();
+                            }
+
+                            // Check the selected day is available for booking
+                            $dayOfWeek = $date->format('N'); // 1 (for Monday) through 7 (for Sunday)
+                            $schedule = $schedulesRepository->findOneBy(['day' => $dayOfWeek]);
+                            if (!$schedule || !$schedule->isIsActive()) {
+                                $context->buildViolation('Ce jour n\'est pas disponible pour la réservation.')
+                                    ->addViolation();
+                            }
+                        },
+                    ]),
                 ],
+                'html5' => false, // Disable native calendar
             ]);
     }
-
-    public function validateDateTime($dateTime, ExecutionContextInterface $context)
-    {
-        // verify if dateTime is define
-        if ($dateTime === null) {
-            return;
-        }
-
-        // verify if datetime is in future
-        if ($dateTime < new \DateTime()) {
-            $context->buildViolation('La date et l\'heure de réservation doivent être futures.')
-                ->addViolation();
-        }
-
-        // verify 15min slice
-        $minutes = (int) $dateTime->format('i');
-        if ($minutes % 15 !== 0) {
-            $context->buildViolation('L\'horaire de réservation doit être une tranche de 15 minutes.')
-                ->addViolation();
-        }
-
-        // get reservation day
-        $reservationDay = strtolower($dateTime->format('l'));
-
-        // get hours by day
-        $schedule = $this->schedulesRepository->findOneBy(['day' => $reservationDay]);
-
-        // verify if schedule is available
-        if (!$schedule) {
-            $context->buildViolation('Les horaires d\'ouverture pour ' . ucfirst($reservationDay) . ' ne sont pas disponibles.')
-                ->addViolation();
-        } else {
-            // compare opening schedule with reservation time
-            $openingHour = $schedule->getOpeningHour();
-            $closingHour = $schedule->getClosingHour();
-            $reservationTime = $dateTime->format('H:i');
-
-            if ($reservationTime < $openingHour->format('H:i') || $reservationTime > $closingHour->format('H:i')) {
-                $context->buildViolation('Vous ne pouvez réserver pour ' . ucfirst($reservationDay) . ' qu\'entre ' . $openingHour->format('H:i') . ' et ' . $closingHour->format('H:i'))
-                    ->addViolation();
-            }
-        }
-    }
-
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Reservations::class,
         ]);
+
+        $resolver->setRequired('schedules_repository'); // Add this line
     }
 }

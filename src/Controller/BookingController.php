@@ -25,7 +25,9 @@ class BookingController extends AbstractController
     {
         $reservation = new Reservations();
         $reservation->setDateTime(new \DateTimeImmutable());
-        $form = $this->createForm(ReservationFormType::class, $reservation);
+        $form = $this->createForm(ReservationFormType::class, $reservation, [
+            'schedules_repository' => $schedulesRepository,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

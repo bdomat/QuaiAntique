@@ -10,7 +10,7 @@ class Reservations
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
@@ -19,10 +19,10 @@ class Reservations
     #[ORM\Column(length: 15)]
     private ?string $reservation_phone = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $guests_number = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable')]
     private ?\DateTimeImmutable $date_time = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservations')]
@@ -37,10 +37,6 @@ class Reservations
     }
 
     public function getReservationName(): ?string
-    {
-        return $this->reservation_name;
-    }
-    public function getreservation_name(): ?string
     {
         return $this->reservation_name;
     }
@@ -76,7 +72,7 @@ class Reservations
         return $this;
     }
 
-    public function getDateTime(): ?\DateTimeInterface
+    public function getDateTime(): ?\DateTimeImmutable
     {
         return $this->date_time;
     }
@@ -91,8 +87,6 @@ class Reservations
 
         return $this;
     }
-
-
 
     public function getUser(): ?Users
     {
@@ -128,7 +122,7 @@ class Reservations
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return (string) $this->id;
     }
