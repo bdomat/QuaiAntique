@@ -7,6 +7,7 @@ use App\Repository\SchedulesRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -43,7 +44,6 @@ class ReservationFormType extends AbstractType
                 'attr' => [
                     'class' => 'form-control'
                 ],
-                'data' => 1, // default value
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'value' => 0,
@@ -51,12 +51,18 @@ class ReservationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('allergies', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('date_time', DateTimeType::class, [
                 'label' => 'Date et heure de réservation:',
                 'widget' => 'single_text',
                 'attr' => [
                     'id' => 'reservation_form_date_time',
                     'class' => 'form-control',
+                    'placeholder' => 'Sélectionner une date et un horaire',
                 ],
                 'minutes' => range(0, 45, 15), // 15 min slice selection
                 'constraints' => [
@@ -79,7 +85,16 @@ class ReservationFormType extends AbstractType
                             }
 
                             // Check the selected day is available for booking
-                            $dayOfWeek = $date->format('N'); // 1 (for Monday) through 7 (for Sunday)
+                            $days = [
+                                1 => 'Lundi',
+                                2 => 'Mardi',
+                                3 => 'Mercredi',
+                                4 => 'Jeudi',
+                                5 => 'Vendredi',
+                                6 => 'Samedi',
+                                7 => 'Dimanche',
+                            ];
+                            $dayOfWeek = $days[$date->format('N')]; // 1 (for Monday) through 7 (for Sunday)
                             $schedule = $schedulesRepository->findOneBy(['day' => $dayOfWeek]);
                             if (!$schedule || !$schedule->isIsActive()) {
                                 $context->buildViolation('Ce jour n\'est pas disponible pour la réservation.')

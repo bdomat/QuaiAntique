@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationsRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReservationsRepository::class)]
@@ -30,6 +31,9 @@ class Reservations
 
     #[ORM\OneToOne(mappedBy: 'reservation', cascade: ['persist', 'remove'])]
     private ?Tables $tables = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $allergies = null;
 
     public function getId(): ?int
     {
@@ -125,5 +129,17 @@ class Reservations
     public function __toString(): string
     {
         return (string) $this->id;
+    }
+
+    public function getAllergies(): ?string
+    {
+        return $this->allergies;
+    }
+
+    public function setAllergies(?string $allergies): self
+    {
+        $this->allergies = $allergies;
+
+        return $this;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Restaurants;
 use App\Entity\Schedules;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -37,6 +38,19 @@ class SchedulesRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function isRestaurantOpenAt(Restaurants $restaurant, \DateTimeInterface $dateTime): bool
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb->where('s.restaurant = :restaurant')
+            ->andWhere('s.opening_time <= :time')
+            ->andWhere('s.closing_time >= :time')
+            ->setParameter('restaurant', $restaurant)
+            ->setParameter('time', $dateTime);
+
+        return count($qb->getQuery()->getResult()) > 0;
     }
 
     //    /**

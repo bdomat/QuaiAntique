@@ -22,4 +22,5 @@ flatpickr("#reservation_form_date_time", {
   time_24hr: true,
   dateFormat: "Y-m-d H:i",
   minuteIncrement: 15,
+  locale: "fr",
 });
