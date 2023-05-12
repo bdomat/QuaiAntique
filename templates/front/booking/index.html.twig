@@ -9,6 +9,8 @@
 			<div class="row">
 				<div class="col action-form text-center">
 					<h1 class="text-center">Réservation</h1>
+
+
 					{{ form_start(form) }}
 					{{ form_row(form.reservation_name) }}
 					{{ form_row(form.reservation_phone) }}
@@ -20,6 +22,7 @@
 							'data-toggle': 'datetimepicker',
 						}
 					}) }}
+					<p style="color: green;" id="remainingSeats"></p>
 					<button type="submit" class="btn">Réserver</button>
 					{{ form_end(form) }}
 				</div>

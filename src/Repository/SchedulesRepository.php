@@ -52,6 +52,20 @@ class SchedulesRepository extends ServiceEntityRepository
 
         return count($qb->getQuery()->getResult()) > 0;
     }
+    public function findScheduleForDateTime(\DateTimeInterface $date_time)
+    {
+        $dayOfWeek = $date_time->format('l'); // Get the day of the week as a string
+
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.day = :day')
+            ->andWhere('s.opening_hour <= :time')
+            ->andWhere('s.closing_hour > :time')
+            ->setParameter('day', $dayOfWeek)
+            ->setParameter('time', $date_time->format('H:i:s')); // Get the time as a string
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
+
 
     //    /**
     //     * @return Schedules[] Returns an array of Schedules objects

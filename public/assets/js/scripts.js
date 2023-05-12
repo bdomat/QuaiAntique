@@ -24,3 +24,18 @@ flatpickr("#reservation_form_date_time", {
   minuteIncrement: 15,
   locale: "fr",
 });
+
+/** Remaining seats**/
+document
+  .getElementById("reservation_form_date_time")
+  .addEventListener("change", function () {
+    var date_time = this.value;
+    var dateTimeObject = new Date(date_time);
+    var formattedDateTime = dateTimeObject.toISOString().substring(0, 16);
+    fetch("/api/remainingSeats/" + formattedDateTime)
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("remainingSeats").innerText =
+          "Places restantes pour le service sélectionné : " + data;
+      });
+  });

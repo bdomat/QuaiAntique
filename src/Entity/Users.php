@@ -160,7 +160,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getDefaultGuestsNumber(): ?int
     {
-        return $this->default_guests_number;
+        return $this->default_guests_number ?? 1;
     }
 
     public function setDefaultGuestsNumber(?int $default_guests_number): self
