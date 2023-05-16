@@ -36,6 +36,7 @@ document
       .then((response) => response.json())
       .then((data) => {
         document.getElementById("remainingSeats").innerText =
-          "Places restantes pour le service sélectionné : " + data;
+          "Places restantes pour le service sélectionné : " +
+          JSON.stringify(data.remainingSeats);
       });
   });

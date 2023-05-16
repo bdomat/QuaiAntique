@@ -54,18 +54,33 @@ class SchedulesRepository extends ServiceEntityRepository
     }
     public function findScheduleForDateTime(\DateTimeInterface $date_time)
     {
-        $dayOfWeek = $date_time->format('l'); // Get the day of the week as a string
+        $dayOfWeek = $date_time->format('l'); // Get the day of the week as a string in English
+        $dayOfWeekFrench = $this->convertDayToFrench($dayOfWeek); // Convert the day to French
 
         $qb = $this->createQueryBuilder('s')
             ->where('s.day = :day')
             ->andWhere('s.opening_hour <= :time')
             ->andWhere('s.closing_hour > :time')
-            ->setParameter('day', $dayOfWeek)
+            ->setParameter('day', $dayOfWeekFrench)
             ->setParameter('time', $date_time->format('H:i:s')); // Get the time as a string
 
         return $qb->getQuery()->getOneOrNullResult();
     }
 
+    private function convertDayToFrench($dayInEnglish)
+    {
+        $daysInFrench = [
+            'Monday'    => 'Lundi',
+            'Tuesday'   => 'Mardi',
+            'Wednesday' => 'Mercredi',
+            'Thursday'  => 'Jeudi',
+            'Friday'    => 'Vendredi',
+            'Saturday'  => 'Samedi',
+            'Sunday'    => 'Dimanche',
+        ];
+
+        return $daysInFrench[$dayInEnglish] ?? null;
+    }
 
     //    /**
     //     * @return Schedules[] Returns an array of Schedules objects
