@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Restaurant Quai Antique | Arnaud Michant
+
 {% endblock %}
+{% block meta %}
+	<meta name="description" content="Restaurant 'Le Quai Antique' - Goûtez à la Savoie ! Découvrez notre carte, réservez une table et rencontrez notre chef Antoine Michant.">
+{% endblock %}
+
 {% block body %}
+
 	<div class="top pt-50 text-center" id="home-top">
 		<h1>Restaurant<br>"Le Quai Antique"</h1>
 		<p class="m-3">Goûtez à la Savoie !</p>
@@ -32,7 +38,7 @@
 			<h2 class="m-5">Notre chef</h2>
 			<div class="row">
 				<div class="col-lg-6 p-0">
-					<img src="assets/images/chef-antoine-michant.jpg" alt=""></div>
+					<img src="assets/images/chef-antoine-michant.jpg" alt="Le chef Antoine Michant"></div>
 				<div class="col-lg-6 p-5 d-grid">
 					<h3>Antoine Michant</h3>
 					<span class="separator"></span>
