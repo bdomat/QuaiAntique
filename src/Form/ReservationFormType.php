@@ -47,7 +47,7 @@ class ReservationFormType extends AbstractType
                 ]
             ])
             ->add('guests_number', IntegerType::class, [
-                'label' => 'Nombre de convives:',
+                'label' => 'Nombre de convives :',
                 'attr' => [
                     'class' => 'form-control'
                 ],
@@ -82,7 +82,7 @@ class ReservationFormType extends AbstractType
                 ]
             ])
             ->add('date_time', DateTimeType::class, [
-                'label' => 'Date et heure de réservation:',
+                'label' => 'Date et heure de réservation :',
                 'widget' => 'single_text',
                 'attr' => [
                     'id' => 'reservation_form_date_time',

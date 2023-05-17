@@ -9,7 +9,12 @@
 			<div class="row">
 				<div class="col action-form text-center">
 					<h1 class="text-center">Réservation</h1>
-
+					{% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+						<p>Vous ne possèdez pas encore de compte ?
+							<br>Gagnez du temps lors de vos prochaines réservations !<br>
+							<a href="{{path('app_register')}}">Créer un compte</a>
+						</p>
+					{% endif %}
 
 					{{ form_start(form) }}
 					{{ form_row(form.reservation_name) }}
