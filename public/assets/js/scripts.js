@@ -29,14 +29,24 @@ flatpickr("#reservation_form_date_time", {
 document
   .getElementById("reservation_form_date_time")
   .addEventListener("change", function () {
-    var date_time = this.value;
-    var dateTimeObject = new Date(date_time);
-    var formattedDateTime = dateTimeObject.toISOString().substring(0, 16);
+    var dateTimeObject = new Date(this.value);
+    var year = dateTimeObject.getFullYear();
+    var month = String(dateTimeObject.getMonth() + 1).padStart(2, "0");
+    var day = String(dateTimeObject.getDate()).padStart(2, "0");
+    var hours = String(dateTimeObject.getHours()).padStart(2, "0");
+    var minutes = String(dateTimeObject.getMinutes()).padStart(2, "0");
+
+    var formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
     fetch("/api/remainingSeats/" + formattedDateTime)
       .then((response) => response.json())
       .then((data) => {
-        document.getElementById("remainingSeats").innerText =
-          "Places restantes pour le service sélectionné : " +
-          JSON.stringify(data.remainingSeats);
+        if (data.error) {
+          document.getElementById("remainingSeats").innerHTML =
+            "<span style='color: red;'>" + data.error + "</span>";
+        } else {
+          document.getElementById("remainingSeats").innerText =
+            "Places restantes pour le service sélectionné : " +
+            data.remainingSeats;
+        }
       });
   });

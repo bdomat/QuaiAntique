@@ -39,13 +39,16 @@ class ReservationsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function findTotalGuestsForService(Schedules $schedule): int
+    public function findTotalGuestsForService(\DateTimeInterface $date, Schedules $schedule): int
     {
+        $dateStart = \DateTime::createFromFormat('Y-m-d H:i:s', $date->format('Y-m-d') . ' ' . $schedule->getOpeningHour()->format('H:i:s'));
+        $dateEnd = \DateTime::createFromFormat('Y-m-d H:i:s', $date->format('Y-m-d') . ' ' . $schedule->getClosingHour()->format('H:i:s'));
+
         $qb = $this->createQueryBuilder('r')
             ->select('SUM(r.guests_number)')
             ->where('r.date_time BETWEEN :start_time AND :end_time')
-            ->setParameter('start_time', $schedule->getOpeningHour())
-            ->setParameter('end_time', $schedule->getClosingHour());
+            ->setParameter('start_time', $dateStart)
+            ->setParameter('end_time', $dateEnd);
 
         return $qb->getQuery()->getSingleScalarResult() ?: 0;
     }

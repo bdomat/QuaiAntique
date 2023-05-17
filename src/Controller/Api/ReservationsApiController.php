@@ -26,7 +26,7 @@ class ReservationsApiController extends AbstractController
     public function remainingSeats(\DateTimeInterface $date_time, ReservationsRepository $reservationsRepository, RestaurantsRepository $restaurantsRepository, SchedulesRepository $schedulesRepository): Response
     {
         // Get the restaurant's guest threshold
-        $restaurant = $restaurantsRepository->findOneBy([]); // Assuming there's only one restaurant
+        $restaurant = $restaurantsRepository->findOneBy([]);
         $guestThreshold = $restaurant->getGuestThreshold();
 
         // Get the schedule for the selected date and time
@@ -36,13 +36,32 @@ class ReservationsApiController extends AbstractController
         if ($schedule === null) {
             // Handle the error, for example return a response or throw an exception
             return $this->json([
-                'error' => 'No schedule found for the provided date and time',
+                'error' => 'Le restaurant est fermé à la date et/ou l\'heure sélectionnée',
                 'remainingSeats' => 0,
             ], Response::HTTP_NOT_FOUND);
         }
 
+        // Check if the selected time is within the last hour before closing
+        $closingHour = (new \DateTime($date_time->format('Y-m-d') . ' ' . $schedule->getClosingHour()->format('H:i:s')));
+        $lastHourBeforeClosing = (clone $closingHour)->modify('-1 hour');
+
+        if ($date_time >= $lastHourBeforeClosing && $date_time < $closingHour) {
+            return $this->json([
+                'error' => 'Les réservations ne sont pas autorisées pendant la dernière heure avant la fermeture',
+                'remainingSeats' => 0,
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
+        // Also check if the selected time is after the closing time
+        if ($date_time >= $closingHour) {
+            return $this->json([
+                'error' => 'Le restaurant est fermé à la date et/ou l\'heure sélectionnée',
+                'remainingSeats' => 0,
+            ], Response::HTTP_BAD_REQUEST);
+        }
+
         // Get the total number of guests already reserved for the selected service
-        $totalGuestsReserved = $reservationsRepository->findTotalGuestsForService($schedule);
+        $totalGuestsReserved = $reservationsRepository->findTotalGuestsForService($date_time, $schedule);
 
         // Calculate the remaining seats
         $remainingSeats = $guestThreshold - $totalGuestsReserved;
