@@ -48,7 +48,7 @@ Suivez ces étapes pour créer un compte administrateur :
 1. Assurez-vous que l'application est bien installée et que la base de données est créée.
 2. Ouvrez le fichier `src/DataFixtures/UserFixtures.php`. Ce fichier contient un script pour la création d'un compte utilisateur avec le rôle d'administrateur.
 3. Dans ce fichier, vous pouvez modifier l'email et le mot de passe de l'administrateur. Par défaut, l'email est `admin@example.com` et le mot de passe est `password`.
-4. Enregistrez vos modifications et exécutez la fixture avec la commande suivante :
+4. Enregistrez vos modifications, ouvrez une nouvelle console à la racine du projet, et exécutez la fixture avec la commande suivante :
 php bin/console doctrine:fixtures:load
 Cette commande va créer un nouvel utilisateur avec les détails que vous avez spécifiés dans le fichier `UserFixtures.php`.
 5. Vous pouvez maintenant vous connecter à l'application avec ce compte administrateur. Allez à `http://localhost:8000/admin` et utilisez l'email et le mot de passe que vous avez définis.
