@@ -19,15 +19,15 @@ class RestaurantsCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setEntityLabelInPlural(label: 'Informations restaurant')
-            ->setEntityLabelInSingular(label: 'Information restaurant');
+            ->setEntityLabelInPlural('Capacité maximale')
+            ->setEntityLabelInSingular('Capacité maximale');
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            IntegerField::new(propertyName: 'guest_threshold', label: 'Nombre de convives maximum'),
+            IntegerField::new('guest_threshold', 'Nombre de convives maximum'),
         ];
     }
 }
