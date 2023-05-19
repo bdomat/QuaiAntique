@@ -18,25 +18,25 @@ Pour exécuter cette application en local, vous aurez besoin de :
 Suivez ces étapes pour installer et exécuter le projet en local :
 
 1. Cloner le dépôt :
-git clone https://github.com/bdomat/QuaiAntique.git
+`git clone https://github.com/bdomat/QuaiAntique.git`
 
 2. Aller dans le répertoire du projet :
-cd QuaiAntique
+`cd QuaiAntique`
 
 3. Installer les dépendances avec Composer :
-composer install
+`composer install`
 
 4. Configurer votre environnement local en modifiant le fichier `.env` ou en créant un fichier `.env.local` :
  - Définissez la variable `DATABASE_URL` avec les informations de connexion à la base de données
  
 5. Créer la base de données :
-php bin/console doctrine:database:create
+`php bin/console doctrine:database:create`
 
 6. Exécuter les migrations pour créer les tables dans la base de données :
-php bin/console doctrine:migrations:migrate
+`php bin/console doctrine:migrations:migrate`
 
 7. Lancer l'application en local avec Symfony :
-symfony server:start
+`symfony server:start`
 
 
 ## Création d'un compte administrateur local
