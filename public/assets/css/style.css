@@ -399,3 +399,16 @@ footer {
   font-size: 1rem;
   color: #dda044;
 }
+.footer-sign {
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-weight: 800 !important;
+  font-style: italic;
+  color: #145565;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  background: #ffffff;
+}
