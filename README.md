@@ -3,6 +3,8 @@
 QuaiAntique est une application web pour la gestion d'un site de restaurant. 
 Cette application a été développée avec le framework Symfony version 6.2.9.
 
+Version en ligne : https://restaurant-quai-antique.fr/
+
 ## Prérequis
 
 Pour exécuter cette application en local, vous aurez besoin de :
