@@ -29,6 +29,9 @@ nav {
   .nav-item .btn-cta-menu {
     display: none;
   }
+  .btn-cta-menu {
+    font-size: 1rem;
+  }
 }
 
 .separator {
@@ -76,6 +79,9 @@ header {
 .header-top a {
   text-decoration: none;
   color: #fff;
+}
+.header-top .row {
+  margin: 0px;
 }
 .header-ico {
   font-size: 1.5rem;
@@ -203,6 +209,15 @@ header {
   text-transform: uppercase;
   font-size: 1.3rem;
 }
+@media (max-width: 991px) {
+  .btn-cta-menu {
+    font-size: 1rem;
+  }
+  nav .btn {
+    padding: 2px 3px;
+  }
+}
+
 .btn-cta-menu i {
   color: #15141a;
 }
