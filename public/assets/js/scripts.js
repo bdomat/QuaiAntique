@@ -29,24 +29,25 @@ flatpickr("#reservation_form_date_time", {
 document
   .getElementById("reservation_form_date_time")
   .addEventListener("change", function () {
-    var dateTimeObject = new Date(this.value);
-    var year = dateTimeObject.getFullYear();
-    var month = String(dateTimeObject.getMonth() + 1).padStart(2, "0");
-    var day = String(dateTimeObject.getDate()).padStart(2, "0");
-    var hours = String(dateTimeObject.getHours()).padStart(2, "0");
-    var minutes = String(dateTimeObject.getMinutes()).padStart(2, "0");
+    const dateTimeObject = new Date(this.value);
+    const year = dateTimeObject.getFullYear();
+    const month = String(dateTimeObject.getMonth() + 1).padStart(2, "0");
+    const day = String(dateTimeObject.getDate()).padStart(2, "0");
+    const hours = String(dateTimeObject.getHours()).padStart(2, "0");
+    const minutes = String(dateTimeObject.getMinutes()).padStart(2, "0");
 
-    var formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
-    fetch("/api/remainingSeats/" + formattedDateTime)
+    const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+    fetch(`/api/remainingSeats/${formattedDateTime}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          document.getElementById("remainingSeats").innerHTML =
-            "<span style='color: red;'>" + data.error + "</span>";
+          document.getElementById(
+            "remainingSeats"
+          ).innerHTML = `<span style='color: red;'>${data.error}</span>`;
         } else {
-          document.getElementById("remainingSeats").innerText =
-            "Places restantes pour le service sélectionné : " +
-            data.remainingSeats;
+          document.getElementById(
+            "remainingSeats"
+          ).innerText = `Places restantes pour le service sélectionné : ${data.remainingSeats}`;
         }
       });
   });
