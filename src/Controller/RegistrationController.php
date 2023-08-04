@@ -18,8 +18,14 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/inscription', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UsersAuthenticator $authenticator, EntityManagerInterface $entityManager, SchedulesRepository $schedulesRepository): Response
-    {
+    public function register(
+        Request $request,
+        UserPasswordHasherInterface $userPasswordHasher,
+        UserAuthenticatorInterface $userAuthenticator,
+        UsersAuthenticator $authenticator,
+        EntityManagerInterface $entityManager,
+        SchedulesRepository $schedulesRepository
+    ): Response {
         $schedules = $schedulesRepository->findAll();
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
