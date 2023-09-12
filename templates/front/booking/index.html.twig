@@ -19,7 +19,7 @@
 						</p>
 					{% endif %}
 
-					{{ form_start(form) }}
+					{{ form_start(form, {'attr': {'id': 'reservation_form'}}) }}
 					{{ form_row(form.reservation_name) }}
 					{{ form_row(form.reservation_phone) }}
 					{{ form_row(form.guests_number) }}

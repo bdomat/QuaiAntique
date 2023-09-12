@@ -82,6 +82,7 @@ class ReservationFormType extends AbstractType
                 ]
             ])
             ->add('date_time', DateTimeType::class, [
+                'required' => true,
                 'label' => 'Date et heure de réservation :',
                 'widget' => 'single_text',
                 'attr' => [
